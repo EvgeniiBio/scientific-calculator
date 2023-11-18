@@ -144,7 +144,11 @@
             let currentValue = '';
 
             function evaluateResult() {
-                const result = eval(currentValue); //NB: Do not use in real progects due to securty reasons
+                const convertedValue = currentValue
+                    .replace("×", "*")
+                    .replace('÷', '/')
+                    .replace('%', '*0.01'); //Wrong??
+                const result = eval(convertedValue); //NB: Do not use in real progects due to securty reasons
                 currentValue = result.toString();
                 display.value = currentValue;
             }
